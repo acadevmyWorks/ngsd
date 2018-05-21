@@ -22,6 +22,10 @@ import { SystemDetailComponent } from './system/system-detail/system-detail.comp
 import { AuthService } from './auth/auth.service';
 import { SystemService } from './system/system.service';
 
+import { ChartModule } from 'angular-highcharts';
+
+import { ChartComponent } from './chart.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { SystemService } from './system/system.service';
     SidenavListComponent,
     SystemComponent,
     SystemListComponent,
-    SystemDetailComponent
+    SystemDetailComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import { SystemService } from './system/system.service';
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB8OyhC-scOhTz4-UaTImr3XyoQRXql-7A'
-    })
+    }),
+    ChartModule
   ],
   providers: [SystemService, AuthService],
   bootstrap: [AppComponent]
