@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -18,6 +18,8 @@ import { SidenavListComponent } from './navigation/sidenav/sidenav-list.componen
 import { SystemComponent } from './system/system.component';
 import { SystemListComponent } from './system/system-list/system-list.component';
 import { SystemDetailComponent } from './system/system-detail/system-detail.component';
+
+import { AuthService } from './auth/auth.service';
 import { SystemService } from './system/system.service';
 
 
@@ -40,11 +42,12 @@ import { SystemService } from './system/system.service';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB8OyhC-scOhTz4-UaTImr3XyoQRXql-7A'
     })
   ],
-  providers: [SystemService],
+  providers: [SystemService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
