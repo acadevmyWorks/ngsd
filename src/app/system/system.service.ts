@@ -4,6 +4,7 @@ import { System } from './system.model';
 
 @Injectable()
 export class SystemService {
+    selectedRow: System;
 
     private systems: System[] = [
         {id: '12345', name: 'Impianto 1', lat: 7.51714667, long: -28.67447189, type: 'solar', status: 'active'},
@@ -15,5 +16,13 @@ export class SystemService {
 
     getAllSystems() {
         return this.systems;
+    }
+
+    selectActiveSystem(system: System) {
+        this.selectedRow = system;
+    }
+
+    deselectActiveSystem() {
+        this.selectedRow = null;
     }
 }

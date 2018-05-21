@@ -1,3 +1,43 @@
-<p>
-  system-list works!
-</p>
+<div fxLayoutAlign="center center">
+    <mat-form-field fxFlex="40%">
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+</div>
+
+<mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.type }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lat">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Lat</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.lat | number }}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="long">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Long</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.long | number }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.status }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onClickRow(row)"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSize]="2" [pageSizeOptions]="[1, 2, 5, 10]">
+</mat-paginator>
