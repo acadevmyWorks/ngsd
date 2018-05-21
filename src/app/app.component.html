@@ -1,1 +1,44 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+    <mat-sidenav #sideNav role="navigation">
+        <mat-nav-list>
+                <a mat-list-item routerLink="/" (click)="sideNav.close()">
+                    <mat-icon>home</mat-icon>
+                    <span class="navigation-caption">Home</span>
+                </a>
+                <a mat-list-item routerLink="/login" (click)="sideNav.close()">
+                    <mat-icon>lock</mat-icon>
+                    <span class="navigation-caption">Login</span>
+                </a>
+                <a mat-list-item routerLink="/" (click)="sideNav.close()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span class="navigation-caption">Logout</span>
+                </a>
+                <a mat-list-item routerLink="/signup" (click)="sideNav.close()">
+                    <mat-icon>account_box</mat-icon>
+                    <span class="navigation-caption">Signin</span>    
+                </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <div>
+                <button mat-icon-button (click)="sideNav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+            <div>Logo</div>
+            <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+                <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+                    <li><a routerLink="/">
+                        Home</a></li>
+                    <li><a routerLink="/login">Login</a></li>
+                    <li><a routerLink="/">Logout</a></li>
+                    <li><a routerLink="/signup">Signup</a></li>
+                </ul>
+            </div>
+        </mat-toolbar>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
