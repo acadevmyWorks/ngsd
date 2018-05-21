@@ -1,2 +1,88 @@
-<app-system-list></app-system-list>
-<app-system-detail></app-system-detail>
+<div fxLayout="row">
+    <div fxFlex>
+            <div fxLayoutAlign="center center">
+                    <mat-form-field fxFlex="40%">
+                        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+                    </mat-form-field>
+                </div>
+            
+                <mat-table [dataSource]="dataSource" matSort>
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="type">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{ element.type }}</mat-cell>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="lat">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Lat</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{ element.lat | number }}</mat-cell>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="long">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Long</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{ element.long | number }}</mat-cell>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{ element.status }}</mat-cell>
+                    </ng-container>
+            
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onClickRow(row)"></mat-row>
+                </mat-table>
+            
+                <mat-paginator [pageSize]="2" [pageSizeOptions]="[1, 2, 5, 10]">
+                </mat-paginator>
+
+                <app-system-list></app-system-list>
+    </div>
+    <div fxFlex="20" *ngIf="isSelectedRow">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div fxFlex fxLayoutAlign="flex-end">
+                    <button mat-icon-button>
+                        <mat-icon aria-label="Example icon-button with a heart icon" (click)="onCloseCard()">close</mat-icon>
+                    </button>
+                </div>
+                <mat-card-title>System Name</mat-card-title>
+                <mat-card-subtitle>Type</mat-card-subtitle>
+            </mat-card-header>
+            <div><p>Qui ci va la mappa</p></div>
+            <mat-card-content>
+                <div fxFlex fxLayout="column"  class="example-container">
+                    <mat-form-field>
+                        <input matInput placeholder="Input">
+                    </mat-form-field>
+                    
+                    <mat-form-field>
+                        <input matInput placeholder="verifyOn">
+                    </mat-form-field>
+                    
+                    <div><p>Qui ci va il grafico</p></div>
+
+                    <mat-form-field>
+                        <mat-select placeholder="Status">
+                        <mat-option value="option">Option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <!--mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions-->
+        </mat-card>
+
+        <app-system-detail></app-system-detail>
+    </div>
+</div>

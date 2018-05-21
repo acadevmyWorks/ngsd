@@ -7,7 +7,14 @@ import {
   MatMenuModule,
   MatIconModule,
   MatButtonModule,
-  MatListModule } from '@angular/material';
+  MatListModule,
+  MatTableModule,
+  MatFormFieldModule,
+  MatPaginatorModule,
+  MatInputModule,
+  MatSortModule,
+  MatCheckboxModule,
+  MatSelectModule } from '@angular/material';
 
 
 
@@ -21,7 +28,14 @@ import {
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSortModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
   exports: [
     MatToolbarModule,
@@ -32,7 +46,14 @@ import {
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSortModule,
+    MatCheckboxModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }
