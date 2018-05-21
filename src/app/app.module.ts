@@ -13,6 +13,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ToolbarComponent } from './navigation/toolbar/toolbar.component';
 import { SidenavListComponent } from './navigation/sidenav/sidenav-list.component';
+import { SystemComponent } from './system/system.component';
+import { SystemListComponent } from './system/system-list/system-list.component';
+import { SystemDetailComponent } from './system/system-detail/system-detail.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { SidenavListComponent } from './navigation/sidenav/sidenav-list.componen
     SignupComponent,
     DashboardComponent,
     ToolbarComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    SystemComponent,
+    SystemListComponent,
+    SystemDetailComponent
   ],
   imports: [
     BrowserModule,
