@@ -2,7 +2,14 @@
     <div fxFlex>
         <app-system-list></app-system-list>
     </div>
-    <div fxFlex="20" *ngIf="systemService.selectedRow">
+    <div fxFlex="20" *ngIf="systemService.selectedRow; else maps">
         <app-system-detail></app-system-detail>
     </div>
+    <ng-template #maps>
+        <div fxFlex="20">
+            <agm-map #AgmMap>
+                <agm-marker *ngFor="let system of systemService.getAllSystems()" [latitude]="system.lat" [longitude]="system.long"></agm-marker>
+            </agm-map>
+        </div>
+    </ng-template>
 </div>

@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -38,7 +39,10 @@ import { SystemService } from './system/system.service';
     AppRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB8OyhC-scOhTz4-UaTImr3XyoQRXql-7A'
+    })
   ],
   providers: [SystemService],
   bootstrap: [AppComponent]

@@ -9,6 +9,9 @@
         <mat-card-subtitle>{{ system.type }}</mat-card-subtitle>
     </mat-card-header>
     <div><p>{{ system.lat }} | {{ system.long }}</p></div>
+    <agm-map [latitude]="system.lat" [longitude]="system.long">
+        <agm-marker [latitude]="system.lat" [longitude]="system.long"></agm-marker>
+    </agm-map>
     <mat-card-content>
         <div fxFlex fxLayout="column"  class="example-container">
             <mat-form-field>
