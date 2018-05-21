@@ -1,15 +1,10 @@
-<div fxLayout="row">
+<div fxLayout="row" fxLayoutAlign="center stretch">
     <div fxFlex>
-        <app-system-list></app-system-list>
+        <app-agm-map [markers]="markers"></app-agm-map>
+        <app-system-list [dataSource]="dataSource" [displayedColumns]="dataColumns" (clickedRow)="setActiveSystem($event)"></app-system-list>
     </div>
-    <div fxFlex="20" *ngIf="systemService.selectedRow; else maps">
-        <app-system-detail></app-system-detail>
+    <div fxFlex="30" *ngIf="activeSystem">
+        <app-system-detail [system]="activeSystem" (closedCard)="setActiveSystem()"></app-system-detail>
     </div>
-    <ng-template #maps>
-        <div fxFlex="20">
-            <agm-map #AgmMap>
-                <agm-marker *ngFor="let system of systemService.getAllSystems()" [latitude]="system.lat" [longitude]="system.long"></agm-marker>
-            </agm-map>
-        </div>
-    </ng-template>
 </div>
+ 

@@ -1,4 +1,4 @@
-<mat-card class="example-card">
+<mat-card fxFlex fxFill>
     <mat-card-header>
         <div fxFlex fxLayoutAlign="flex-end">
             <button mat-icon-button>
@@ -6,30 +6,11 @@
             </button>
         </div>
         <mat-card-title>{{ system.name }}</mat-card-title>
-        <mat-card-subtitle>{{ system.type }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ system.type }} | {{ system.status }}</mat-card-subtitle>
     </mat-card-header>
-    <div><p>{{ system.lat }} | {{ system.long }}</p></div>
-    <agm-map [latitude]="system.lat" [longitude]="system.long">
-        <agm-marker [latitude]="system.lat" [longitude]="system.long"></agm-marker>
-    </agm-map>
+    <app-agm-map [markers]="[{lat: system.lat, long: system.long}]"></app-agm-map>
     <mat-card-content>
-        <div fxFlex fxLayout="column"  class="example-container">
-            <mat-form-field>
-                <input matInput placeholder="Input">
-            </mat-form-field>
-            
-            <mat-form-field>
-                <input matInput placeholder="verifyOn">
-            </mat-form-field>
-            
-            <div><p>Qui ci va il grafico</p></div>
-
-            <mat-form-field>
-                <mat-select placeholder="Status">
-                <mat-option value="option">Option</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+        <div><app-chart></app-chart></div>
     </mat-card-content>
     <!--mat-card-actions>
         <button mat-button>LIKE</button>

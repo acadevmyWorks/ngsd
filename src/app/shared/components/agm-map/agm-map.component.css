@@ -1,0 +1,6 @@
+agm-map.map-multiple-marker, app-agm-map {
+    height: 300px;
+  }
+agm-map.map-single-marker, app-agm-map {
+    height: 150px;
+  }

@@ -1,23 +1,22 @@
-import { SystemService } from './../system.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { System } from '../system.model';
 
 @Component({
   selector: 'app-system-detail',
   templateUrl: './system-detail.component.html',
-  styleUrls: ['./system-detail.component.css']
+  styleUrls: ['./system-detail.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SystemDetailComponent implements OnInit {
-  system: System;
+  @Input() system: System;
+  @Output() closedCard: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private systemService: SystemService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.system = this.systemService.selectedRow;
-   }
+  ngOnInit() {}
 
   onCloseCard() {
-    this.systemService.deselectActiveSystem();
+    this.closedCard.emit();
   }
 
   onSubmit(f) { }

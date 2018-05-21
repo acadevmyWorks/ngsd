@@ -1,32 +1,29 @@
-import { System } from './system.model';
-import { Component, OnInit, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
-import { SystemService } from './system.service';
-import { GoogleMapsAPIWrapper, AgmMap, LatLngBounds, LatLngBoundsLiteral} from '@agm/core';
+import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 
-declare var google: any;
+import { System } from './system.model';
+import { Marker } from './../shared/components/agm-map/marker.model';
+import { SystemService } from './system.service';
 
 @Component({
   selector: 'app-system',
   templateUrl: './system.component.html',
   styleUrls: ['./system.component.css']
 })
-export class SystemComponent implements OnInit, AfterViewChecked {
-  @ViewChild('AgmMap') agmMap: AgmMap;
+export class SystemComponent implements OnInit {
+  dataSource: MatTableDataSource<System> = new MatTableDataSource<System>();
+  dataColumns: Array<string> = ['id', 'name', 'type', 'lat', 'long', 'status'];
+  activeSystem?: System;
+  markers: Marker[];
 
   constructor(public systemService: SystemService) {}
 
   ngOnInit() {
+    this.dataSource.data = this.systemService.getAllSystems();
+    this.markers = this.dataSource.data.map(system =>  ({lat: system.lat, long: system.long}));
   }
 
-  ngAfterViewChecked() {
-    console.log(this.agmMap);
-    this.agmMap.mapReady.subscribe(map => {
-      const bounds: LatLngBounds = new google.maps.LatLngBounds();
-      for (const mm of this.systemService.getAllSystems()) {
-        bounds.extend(new google.maps.LatLng(mm.lat, mm.long));
-      }
-      map.fitBounds(bounds);
-    });
+  setActiveSystem(activeSystem: System | undefined) {
+    this.activeSystem = activeSystem;
   }
-
 }

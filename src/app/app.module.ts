@@ -18,6 +18,7 @@ import { SidenavListComponent } from './navigation/sidenav/sidenav-list.componen
 import { SystemComponent } from './system/system.component';
 import { SystemListComponent } from './system/system-list/system-list.component';
 import { SystemDetailComponent } from './system/system-detail/system-detail.component';
+import { AgmMapComponent } from './shared/components/agm-map/agm-map.component';
 
 import { AuthService } from './auth/auth.service';
 import { SystemService } from './system/system.service';
@@ -38,7 +39,8 @@ import { ChartComponent } from './chart.component';
     SystemComponent,
     SystemListComponent,
     SystemDetailComponent,
-    ChartComponent
+    ChartComponent,
+    AgmMapComponent
   ],
   imports: [
     BrowserModule,
