@@ -1,3 +1,7 @@
+import { LogGridComponent } from './shared/components/widgets/log/log-grid.component';
+import { ErrorComponent } from './shared/components/widgets/error/error.component';
+import { WidgetService } from './shared/components/widgets/widget.service';
+import { DashboardService } from './dashboard/dashboard.services';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +29,9 @@ import { SystemService } from './system/system.service';
 
 import { ChartModule } from 'angular-highcharts';
 
-import { ChartComponent } from './chart.component';
+import { DynamicContainerComponent } from './shared/components/dynamic-container/dynamic-container.component';
+import { WelcomeComponent } from './shared/components/widgets/welcome/welcome.component';
+import { ChartComponent } from './shared/components/widgets/charts/chart.component';
 
 
 @NgModule({
@@ -40,7 +46,17 @@ import { ChartComponent } from './chart.component';
     SystemListComponent,
     SystemDetailComponent,
     ChartComponent,
-    AgmMapComponent
+    AgmMapComponent,
+    DynamicContainerComponent,
+    WelcomeComponent,
+    ErrorComponent,
+    LogGridComponent
+  ],
+  entryComponents: [
+    WelcomeComponent,
+    ChartComponent,
+    ErrorComponent,
+    LogGridComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +71,7 @@ import { ChartComponent } from './chart.component';
     }),
     ChartModule
   ],
-  providers: [SystemService, AuthService],
+  providers: [SystemService, DashboardService, WidgetService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
