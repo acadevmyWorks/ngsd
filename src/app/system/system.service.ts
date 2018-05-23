@@ -25,4 +25,30 @@ export class SystemService {
     deselectActiveSystem() {
         this.selectedRow = null;
     }
+
+    getGraphs(id: string) {
+        return [
+            {
+                type: 'amchart',
+                data: {
+                id: 'ciccio',
+                title: 'Un grafico a barre',
+                type: 'bar',
+                series: [
+                    { name: 'Ore di Attività', data: [1, 2, 3] },
+                    { name: 'Ore di Intattività', data: [4, 6, 7] }
+                ] }
+             },
+             {
+                type: 'chart',
+                data: {
+                title: 'Un grafico a torta',
+                type: 'area',
+                series: [
+                    { name: 'Ore di Attività', data: [1, 2, 3] },
+                    { name: 'Ore di Intattività', data: [4, 6, 7] }
+                ] }
+             },
+        ];
+    }
 }

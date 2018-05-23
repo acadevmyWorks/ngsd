@@ -1,3 +1,4 @@
+import { AmChartComponent } from './charts/amchart.component';
 import { LogGridComponent } from './log/log-grid.component';
 import { ErrorComponent } from './error/error.component';
 import { AgmMapComponent } from './../agm-map/agm-map.component';
@@ -10,6 +11,7 @@ import { Injectable } from '@angular/core';
 export class WidgetService {
     private mappings = {
         'chart': ChartComponent,
+        'amchart': AmChartComponent,
         'welcome': WelcomeComponent,
         'map': AgmMapComponent,
         'log-grid': LogGridComponent,

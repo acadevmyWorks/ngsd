@@ -1,3 +1,4 @@
+import { AmChartComponent } from './shared/components/widgets/charts/amchart.component';
 import { LogGridComponent } from './shared/components/widgets/log/log-grid.component';
 import { ErrorComponent } from './shared/components/widgets/error/error.component';
 import { WidgetService } from './shared/components/widgets/widget.service';
@@ -33,6 +34,7 @@ import { DynamicContainerComponent } from './shared/components/dynamic-container
 import { WelcomeComponent } from './shared/components/widgets/welcome/welcome.component';
 import { ChartComponent } from './shared/components/widgets/charts/chart.component';
 
+import { AmChartsModule } from '@amcharts/amcharts3-angular';
 
 @NgModule({
   declarations: [
@@ -50,13 +52,15 @@ import { ChartComponent } from './shared/components/widgets/charts/chart.compone
     DynamicContainerComponent,
     WelcomeComponent,
     ErrorComponent,
-    LogGridComponent
+    LogGridComponent,
+    AmChartComponent
   ],
   entryComponents: [
     WelcomeComponent,
     ChartComponent,
     ErrorComponent,
-    LogGridComponent
+    LogGridComponent,
+    AmChartComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +70,7 @@ import { ChartComponent } from './shared/components/widgets/charts/chart.compone
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    AmChartsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB8OyhC-scOhTz4-UaTImr3XyoQRXql-7A'
     }),

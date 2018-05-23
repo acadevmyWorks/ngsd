@@ -1,3 +1,4 @@
+import { IDynamicComponent } from './../shared/components/dynamic-container/dynamicComponent.interface';
 import { MatTableDataSource } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,6 +15,7 @@ export class SystemComponent implements OnInit {
   dataSource: MatTableDataSource<System> = new MatTableDataSource<System>();
   dataColumns: Array<string> = ['id', 'name', 'type', 'lat', 'long', 'status'];
   activeSystem?: System;
+  dynamicComponents: IDynamicComponent[];
   markers: Marker[];
 
   constructor(public systemService: SystemService) {}
@@ -25,5 +27,6 @@ export class SystemComponent implements OnInit {
 
   setActiveSystem(activeSystem: System | undefined) {
     this.activeSystem = activeSystem;
+    this.dynamicComponents = this.systemService.getGraphs(activeSystem.id);
   }
 }

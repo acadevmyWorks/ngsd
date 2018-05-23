@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { System } from '../system.model';
+import { IDynamicComponent } from '../../shared/components/dynamic-container/dynamicComponent.interface';
 
 @Component({
   selector: 'app-system-detail',
@@ -10,6 +11,7 @@ import { System } from '../system.model';
 export class SystemDetailComponent implements OnInit {
   @Input() system: System;
   @Output() closedCard: EventEmitter<void> = new EventEmitter<void>();
+  @Input() dynamicComponents: IDynamicComponent[];
 
   constructor() {}
 

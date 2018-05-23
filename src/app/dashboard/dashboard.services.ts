@@ -6,11 +6,12 @@ export class DashboardService {
         { title: 'Benvenuto!', cols: 2, rows: 1, component: { type: 'welcome', data: { name: 'Francesco Sciuti' } } },
         {
             title: 'Widget Grafico Impianti',
-             cols: 1,
+             cols: 2,
              rows: 1,
              component: {
-                  type: 'chart',
+                  type: 'amchart',
                   data: {
+                      id: 'pino',
                       title: 'Un grafico a barre',
                       type: 'bar',
                       series: [

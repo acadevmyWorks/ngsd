@@ -10,7 +10,18 @@
     </mat-card-header>
     <app-agm-map [markers]="[{lat: system.lat, long: system.long}]"></app-agm-map>
     <mat-card-content>
-        <div><app-chart></app-chart></div>
+        <hr/>
+        <mat-tab-group>
+            <mat-tab *ngFor="let item of dynamicComponents; let i=index" label="First + i">
+                <ng-template matTabContent>    
+                <div>
+                    <app-dynamic-container [dynamicComponent]="item"></app-dynamic-container>
+                    <!--app-amchart-test [id]="'id' + i"></app-amchart-test-->
+                </div>
+                </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+        
     </mat-card-content>
     <!--mat-card-actions>
         <button mat-button>LIKE</button>

@@ -4,7 +4,8 @@
         <app-system-list [dataSource]="dataSource" [displayedColumns]="dataColumns" (clickedRow)="setActiveSystem($event)"></app-system-list>
     </div>
     <div fxFlex="30" *ngIf="activeSystem">
-        <app-system-detail [system]="activeSystem" (closedCard)="setActiveSystem()"></app-system-detail>
+        <app-system-detail [system]="activeSystem" [dynamicComponents]="dynamicComponents" (closedCard)="setActiveSystem()"></app-system-detail>
     </div>
 </div>
+
  
