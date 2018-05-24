@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { AuthGuard } from './auth/auth.guard';
+
+const routes: Routes = [
+   { path: '', loadChildren: './dashboard/dashboard.module#AppDashboardModule', canActivate: [AuthGuard] },
+   { path: 'system', loadChildren: './system/system.module#AppSystemModule', canActivate: [AuthGuard] }
+];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [AuthGuard]
 })
 export class AppRoutingModule {}
 

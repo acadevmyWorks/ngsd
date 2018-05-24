@@ -6,7 +6,7 @@ import { SystemComponent } from './system.component';
 import { AuthGuard } from './../auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'system', component: SystemComponent, canActivate: [AuthGuard]  }
+  { path: '', component: SystemComponent  }
 ];
 
 @NgModule({

@@ -29,9 +29,7 @@ import { SidenavListComponent } from './navigation/sidenav/sidenav-list.componen
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    AppAuthModule,
-    AppSystemModule,
-    AppDashboardModule
+    AppAuthModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
