@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef } from '@angular/core';
 
-import { WidgetService } from './../widgets/widget.service';
+import { WidgetService } from './../widget.service';
 import { IDynamicComponent } from './dynamicComponent.interface';
 
 @Component({

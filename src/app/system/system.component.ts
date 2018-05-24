@@ -1,9 +1,9 @@
-import { IDynamicComponent } from './../shared/components/dynamic-container/dynamicComponent.interface';
+import { IDynamicComponent } from './../widget/dynamic-container/dynamicComponent.interface';
 import { MatTableDataSource } from '@angular/material';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { System } from './system.model';
-import { Marker } from './../shared/components/agm-map/marker.model';
+import { Marker } from './../widget/components/agm-map/marker.model';
 import { SystemService } from './system.service';
 
 import { Observable, Subscription } from 'rxjs';

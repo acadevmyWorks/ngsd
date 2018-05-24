@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { System } from '../system.model';
-import { IDynamicComponent } from '../../shared/components/dynamic-container/dynamicComponent.interface';
+import { IDynamicComponent } from '../../widget/dynamic-container/dynamicComponent.interface';
 
 @Component({
   selector: 'app-system-detail',

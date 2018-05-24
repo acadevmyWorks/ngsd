@@ -1,7 +1,7 @@
 import { MatTableDataSource } from '@angular/material';
 import { Component, OnInit, Input } from '@angular/core';
 
-import { System } from './../../../../system/system.model';
+import { System } from './../../../system/system.model';
 
 @Component({
   selector: 'app-dynamic-component',
