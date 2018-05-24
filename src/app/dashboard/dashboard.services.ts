@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { map } from 'rxjs/operators';
+
 
 @Injectable()
 export class DashboardService {
-    private _cards = [
+    /*private _cards = [
         { title: 'Benvenuto!', cols: 2, rows: 1, component: { type: 'welcome', data: { name: 'Francesco Sciuti' } } },
         {
             title: 'Widget Grafico Impianti',
@@ -24,7 +27,7 @@ export class DashboardService {
             title: 'Widget Elenco Impianti',
             cols: 1,
             rows: 1,
-            component: { 
+            component: {
                 type: 'log-grid',
                 data: {
                     dataSourceRecords: [
@@ -54,7 +57,7 @@ export class DashboardService {
             title: 'Card 4',
             cols: 1,
             rows: 1,
-            component: { 
+            component: {
                 type: 'log-grid',
                 data: {
                     dataSourceRecords: [
@@ -65,11 +68,15 @@ export class DashboardService {
                 }
             }
         }
-    ];
+    ];*/
 
-    constructor() {}
+    constructor( private db: AngularFirestore) {}
 
     getCards() {
-        return [...this._cards];
+        return this.db.collection('dashboard').valueChanges().pipe(
+            map(dataArray => {
+                return dataArray.sort((a: any, b: any) => a.order - b.order);
+            })
+        );
     }
 }

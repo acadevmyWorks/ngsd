@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { AmChartComponent } from './shared/components/widgets/charts/amchart.component';
 import { LogGridComponent } from './shared/components/widgets/log/log-grid.component';
 import { ErrorComponent } from './shared/components/widgets/error/error.component';
@@ -7,6 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -74,7 +79,10 @@ import { AmChartsModule } from '@amcharts/amcharts3-angular';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB8OyhC-scOhTz4-UaTImr3XyoQRXql-7A'
     }),
-    ChartModule
+    ChartModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [SystemService, DashboardService, WidgetService, AuthService],
   bootstrap: [AppComponent]

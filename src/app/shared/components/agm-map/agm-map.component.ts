@@ -18,7 +18,7 @@ export class AgmMapComponent implements AfterViewChecked {
     @Input() markers: Marker[];
 
     ngAfterViewChecked() {
-        if (this.markers.length > 1) {
+        if (this.markers && this.markers.length > 1) {
           this.agmMap.mapReady.subscribe(map => {
             const bounds: LatLngBounds = new google.maps.LatLngBounds();
             for (const mm of this.markers) {
