@@ -15,6 +15,7 @@ import { AuthService } from './auth/auth.service';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './navigation/toolbar/toolbar.component';
 import { SidenavListComponent } from './navigation/sidenav/sidenav-list.component';
+import { UiService } from './shared/ui.service';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { SidenavListComponent } from './navigation/sidenav/sidenav-list.componen
     SharedModule,
     AppAuthModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

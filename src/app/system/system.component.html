@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="center stretch">
+<div *ngIf="!onLoading" fxLayout="row" fxLayoutAlign="center stretch">
     <div fxFlex>
         <app-agm-map [markers]="markers"></app-agm-map>
         <app-system-list [dataSource]="dataSource" [displayedColumns]="dataColumns" (clickedRow)="setActiveSystem($event)"></app-system-list>
@@ -7,5 +7,6 @@
         <app-system-detail [system]="activeSystem" [dynamicComponents]="dynamicComponents" (closedCard)="setActiveSystem()"></app-system-detail>
     </div>
 </div>
+<div *ngIf="onLoading" fxLayout fxLayoutAlign="center"><mat-spinner></mat-spinner></div>
 
  

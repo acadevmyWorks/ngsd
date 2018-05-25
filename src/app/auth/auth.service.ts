@@ -1,3 +1,4 @@
+import { UiService } from './../shared/ui.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
@@ -15,22 +16,24 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
+    private uiService: UiService
     // private trainingService: TrainingService
   ) {}
 
   initAuthListener() {
+    this.uiService.loadingStateChanged.next(true);
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.isAuthenticated = true;
         this.authChange.next(true);
         this.router.navigate(['']);
-        console.log('ci sono');
+        this.uiService.loadingStateChanged.next(false);
       } else {
         // this.trainingService.cancelSubscriptions();
         this.authChange.next(false);
         this.router.navigate(['/login']);
+        this.uiService.loadingStateChanged.next(false);
         this.isAuthenticated = false;
-        console.log('non ci sono');
       }
     });
   }

@@ -21,6 +21,7 @@ export class SystemComponent implements OnInit, OnDestroy {
   dynamicComponents: IDynamicComponent[];
   markers: Marker[];
   systems$: Subscription;
+  onLoading = true;
 
   constructor(public systemService: SystemService) {}
 
@@ -30,6 +31,7 @@ export class SystemComponent implements OnInit, OnDestroy {
       this.dataSource.data = <System[]>result;
       this.markers = this.dataSource.data.map(system => ({lat: system.lat, long: system.long}));
       this.activeSystem = (this.activeSystem) ? <System>result.find(ex => ex.id === this.activeSystem.id) : undefined;
+      this.onLoading = false;
     });
   }
 
