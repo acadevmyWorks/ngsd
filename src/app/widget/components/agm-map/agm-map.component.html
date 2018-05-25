@@ -1,5 +1,9 @@
 <agm-map class="map-multiple-marker" #AgmMap *ngIf="markers && markers.length > 1" [mapDraggable]="false" [zoomControl]="false" [streetViewControl]="false">
-    <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.long"></agm-marker>
+    <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.long">
+        <agm-info-window [disableAutoPan]="false">
+            {{marker.lat}} - {{marker.long}}
+        </agm-info-window>
+    </agm-marker>
 </agm-map>
 
 <agm-map class="map-single-marker" *ngIf="markers && markers.length == 1" [latitude]="markers[0].lat" [longitude]="markers[0].long">

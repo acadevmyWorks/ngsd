@@ -28,9 +28,9 @@ export class ChartComponent implements OnInit {
       series: this.series
     });
 
-    /*setTimeout(() => {
+    setTimeout(() => {
       this.chart.ref.reflow();
-    }, 0);*/
+    }, 0);
   }
   /*add() {
     this.chart.addPoint(Math.floor(Math.random() * 10));

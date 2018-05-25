@@ -7,15 +7,16 @@ import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 })
 export class AmChartComponent implements OnInit, OnDestroy {
     @Input() id: string;
+    @Input() series: {name: string, data: number}[];
     public options: any;
     private chart2: AmChart;
     private timer: number;
-  
+
     constructor(private AmCharts: AmChartsService) {}
-  
+
     makeRandomDataProvider() {
       const dataProvider = [];
-  
+
       // Generate random data
       for (let year = 1950; year <= 2005; ++year) {
         dataProvider.push({
@@ -23,10 +24,10 @@ export class AmChartComponent implements OnInit, OnDestroy {
           value: Math.floor(Math.random() * 100) - 50
         });
       }
-  
+
       return dataProvider;
     }
-  
+
     makeOptions(dataProvider) {
       return {
         'type': 'serial',
@@ -47,7 +48,7 @@ export class AmChartComponent implements OnInit, OnDestroy {
           'lineThickness': 2,
           'negativeLineColor': '#637bb6',
           'type': 'smoothedLine',
-          'valueField': 'value'
+          'valueField': 'data'
         }],
         'chartScrollbar': {
           'graph': this.id,
@@ -74,7 +75,7 @@ export class AmChartComponent implements OnInit, OnDestroy {
           'fullWidth': true
         },
         'dataDateFormat': 'YYYY',
-        'categoryField': 'year',
+        'categoryField': 'name',
         'categoryAxis': {
           'minPeriod': 'YYYY',
           'parseDates': true,
@@ -86,31 +87,19 @@ export class AmChartComponent implements OnInit, OnDestroy {
         }
       };
     }
-  
+
     ngOnInit() {
       // Create chartdiv1
-      this.options = this.makeOptions(this.makeRandomDataProvider());
-  
+      this.options = this.makeOptions(this.series);
+
       // Create chartdiv2
-      this.chart2 = this.AmCharts.makeChart('chartdiv2', this.makeOptions(this.makeRandomDataProvider()));
-  
-      /*this.timer = setInterval(() => {
-        // Update chartdiv1
-        this.options = this.makeOptions(this.makeRandomDataProvider());
-  
-        // Update chartdiv2
-        this.AmCharts.updateChart(this.chart2, () => {
-          this.chart2.dataProvider = this.makeRandomDataProvider();
-        });
-      }, 3000);*/
+      this.chart2 = this.AmCharts.makeChart('chartdiv2', this.makeOptions(this.series));
     }
-  
+
     ngOnDestroy() {
-      /*clearInterval(this.timer);
-  
       // Cleanup chartdiv2
-      if (this.chart2) {
+      /* if (this.chart2) {
         this.AmCharts.destroyChart(this.chart2);
-      }*/
+      } */
     }
 }
