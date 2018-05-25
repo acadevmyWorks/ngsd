@@ -6,4 +6,5 @@ export interface System {
     long?: number;
     verifyOn?: Date;
     status: 'active' | 'inactive' | 'alert';
+    graphs?: any;
 }

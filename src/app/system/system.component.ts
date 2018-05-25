@@ -37,7 +37,7 @@ export class SystemComponent implements OnInit, OnDestroy {
 
   setActiveSystem(activeSystem: System | undefined) {
     this.activeSystem = activeSystem;
-    this.dynamicComponents = this.systemService.getGraphs(activeSystem.id);
+    this.dynamicComponents = this.systemService.getGraphs(activeSystem);
   }
 
   ngOnDestroy() {

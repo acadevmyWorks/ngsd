@@ -12,14 +12,14 @@
     <mat-card-content>
         <hr/>
         <mat-tab-group>
-            <mat-tab *ngFor="let item of dynamicComponents; let i=index" label="First + i">
-                <ng-template matTabContent>    
+            <mat-tab *ngFor="let item of dynamicComponents; let i=index" label="{{ item.data.title | titlecase }}">
+                <ng-template matTabContent>
                 <div>
                     <app-dynamic-container [dynamicComponent]="item"></app-dynamic-container>
                 </div>
                 </ng-template>
             </mat-tab>
         </mat-tab-group>
-        
+
     </mat-card-content>
 </mat-card>
