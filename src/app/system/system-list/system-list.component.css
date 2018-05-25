@@ -1,0 +1,11 @@
+*[title=inactive]{
+  color: gray;
+}
+
+*[title=active]{
+  color: green;
+}
+
+*[title=alert]{
+  color: red;
+}

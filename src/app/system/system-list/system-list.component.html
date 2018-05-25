@@ -17,14 +17,19 @@
 
     <ng-container matColumnDef="type">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.type }}</mat-cell>
+        <mat-cell *matCellDef="let element" [ngSwitch]="element.type">
+          <mat-icon *ngSwitchCase="'solar'" title="{{ element.type }}">wb_sunny</mat-icon>
+          <mat-icon *ngSwitchCase="'geothermal'" title="{{ element.type }}">ac_unit</mat-icon>
+          <mat-icon *ngSwitchCase="'marine'" title="{{ element.type }}">pool</mat-icon>
+          <mat-icon *ngSwitchDefault title="{{ element.type }}">tune</mat-icon>
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lat">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Lat</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.lat | number }}</mat-cell>
     </ng-container>
-    
+
     <ng-container matColumnDef="long">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Long</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.long | number }}</mat-cell>
@@ -32,7 +37,11 @@
 
     <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.status }}</mat-cell>
+        <mat-cell *matCellDef="let element" [ngSwitch]="element.status">
+            <mat-icon *ngSwitchCase="'active'" title="{{ element.status }}">done</mat-icon>
+            <mat-icon *ngSwitchCase="'inactive'" title="{{ element.status }}">do_not_disturb_alt</mat-icon>
+            <mat-icon *ngSwitchDefault title="{{ element.status }}">report_problem</mat-icon>
+        </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
