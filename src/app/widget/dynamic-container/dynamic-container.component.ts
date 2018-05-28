@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef, Injector } from '@angular/core';
 
 import { WidgetService } from './../widget.service';
 import { IDynamicComponent } from './dynamicComponent.interface';
@@ -27,15 +27,20 @@ export class DynamicContainerComponent implements OnInit, OnDestroy {
       componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
     }
 
-    const componentRef = this.dynamicContainer.createComponent(componentFactory);
+    const injector = Injector.create([], this.dynamicContainer.parentInjector);
+    const componentRef = this.dynamicContainer.createComponent(componentFactory, null, injector);
     const componentInstance = <IDynamicComponent>componentRef.instance;
     componentFactory.inputs.forEach(element => {
       componentInstance[element.propName] = this.dynamicComponent.data[element.propName];
     });
+
+    // componentInstance.submitted.subscribe(this.loginUser);
   }
 
   ngOnDestroy() {
-    // this.componentRef.destroy();
+    if (this.componentRef) {
+      this.componentRef.destroy();
+    }
   }
 
 }
