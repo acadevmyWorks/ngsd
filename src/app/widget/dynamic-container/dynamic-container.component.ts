@@ -1,3 +1,4 @@
+// tslint:disable-next-line:max-line-length
 import { Component, OnInit, Input, OnDestroy, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef, Injector } from '@angular/core';
 
 import { WidgetService } from './../widget.service';
@@ -34,7 +35,7 @@ export class DynamicContainerComponent implements OnInit, OnDestroy {
       componentInstance[element.propName] = this.dynamicComponent.data[element.propName];
     });
 
-    // componentInstance.submitted.subscribe(this.loginUser);
+    // componentInstance.submitted.subscribe();
   }
 
   ngOnDestroy() {

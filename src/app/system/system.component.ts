@@ -26,7 +26,8 @@ export class SystemComponent implements OnInit, OnDestroy {
   constructor(public systemService: SystemService) {}
 
   ngOnInit() {
-    // TODO: Add Filter on Observable
+    // TODO: Add Filter/Map on Observable
+    // TODO: Reactive onLoading
     this.systems$ = this.systemService.getAllSystems().subscribe(result => {
       this.dataSource.data = <System[]>result;
       this.markers = this.dataSource.data.map(system => ({lat: system.lat, long: system.long}));

@@ -1,12 +1,12 @@
-import { UiService } from './../shared/ui.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+import { UiService } from './../shared/ui.service';
+
 import { User } from './user.model';
 import { AuthData } from './auth-data.model';
-// import { TrainingService } from '../training/training.service';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +17,6 @@ export class AuthService {
     private router: Router,
     private afAuth: AngularFireAuth,
     private uiService: UiService
-    // private trainingService: TrainingService
   ) {}
 
   initAuthListener() {
@@ -29,7 +28,6 @@ export class AuthService {
         this.router.navigate(['']);
         this.uiService.loadingStateChanged.next(false);
       } else {
-        // this.trainingService.cancelSubscriptions();
         this.authChange.next(false);
         this.router.navigate(['/login']);
         this.uiService.loadingStateChanged.next(false);

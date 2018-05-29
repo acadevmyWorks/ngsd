@@ -9,7 +9,7 @@ export class AmChartComponent implements OnInit, OnDestroy {
     @Input() id: string;
     @Input() series: {name: string, data: number}[];
     public options: any;
-    private chart2: AmChart;
+    private chart: AmChart;
     private timer: number;
 
     constructor(private AmCharts: AmChartsService) {}
@@ -89,17 +89,13 @@ export class AmChartComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-      // Create chartdiv1
       this.options = this.makeOptions(this.series);
-
-      // Create chartdiv2
-      this.chart2 = this.AmCharts.makeChart('chartdiv2', this.makeOptions(this.series));
+      this.chart = this.AmCharts.makeChart('chartdiv', this.makeOptions(this.series));
     }
 
     ngOnDestroy() {
-      // Cleanup chartdiv2
-      /* if (this.chart2) {
-        this.AmCharts.destroyChart(this.chart2);
-      } */
+      if (this.chart) {
+        this.AmCharts.destroyChart(this.chart);
+      }
     }
 }
