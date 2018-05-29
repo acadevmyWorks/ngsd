@@ -3,8 +3,8 @@
         <app-agm-map [markers]="markers"></app-agm-map>
         <app-system-list [dataSource]="dataSource" [displayedColumns]="dataColumns" (clickedRow)="setActiveSystem($event)"></app-system-list>
     </div>
-    <div fxFlex="30" *ngIf="activeSystem?.id">
-        <app-system-detail [system]="activeSystem" [dynamicComponents]="dynamicComponents" (closedCard)="setActiveSystem()"></app-system-detail>
+    <div fxFlex="30" *ngIf="(activeSystem$ | async)?.id">
+        <app-system-detail [system]="activeSystem$ | async" [dynamicComponents]="dynamicComponents" (closedCard)="setActiveSystem()"></app-system-detail>
     </div>
 </div>
 <div *ngIf="onLoading" fxLayout fxLayoutAlign="center"><mat-spinner></mat-spinner></div>

@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { System } from './system.model';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject, Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 
 @Injectable()
 export class SystemService {
     availableSystems = new Subject<System[]>();
-    activatedSystem = new Subject<System>();
+    activatedSystem = new BehaviorSubject<System>(undefined);
     systemMarkers = new Subject<{lat: number, long: number}[]>();
 
     // TODO: Expose all Subject as Observable ;)
-    activatedSystemObservable = this.activatedSystem.asObservable();
+    activatedSystemObservable: Observable<System> = this.activatedSystem.asObservable();
 
     systems: System[];
     activeSystem: System | undefined;

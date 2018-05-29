@@ -17,12 +17,15 @@ import { Observable, Subscription } from 'rxjs';
 export class SystemComponent implements OnInit, OnDestroy {
   dataSource: MatTableDataSource<System> = new MatTableDataSource<System>();
   dataColumns: Array<string> = ['id', 'name', 'type', 'lat', 'long', 'status'];
-  activeSystem?: System | undefined;
+
   dynamicComponents: IDynamicComponent[];
   markers: Marker[];
+
   systems$: Subscription;
   markers$: Subscription;
-  activeSystem$: Subscription;
+  // activeSystem$: Subscription;
+  activeSystem$: Observable<System>;
+
   onLoading = true;
 
   constructor(public systemService: SystemService) {}
@@ -36,9 +39,10 @@ export class SystemComponent implements OnInit, OnDestroy {
       this.markers$ = this.systemService.systemMarkers.subscribe(markers => {
         this.markers = markers;
       });
-      this.activeSystem$ = this.systemService.activatedSystemObservable.subscribe(system => {
+      /*this.activeSystem$ = this.systemService.activatedSystemObservable.subscribe(system => {
         this.activeSystem = system;
-      });
+      });*/
+      this.activeSystem$ = this.systemService.activatedSystemObservable;
       this.systemService.getAllSystems();
 
   }
@@ -51,6 +55,6 @@ export class SystemComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.systems$.unsubscribe();
     this.markers$.unsubscribe();
-    this.activeSystem$.unsubscribe();
+    // this.activeSystem$.unsubscribe();
   }
 }
