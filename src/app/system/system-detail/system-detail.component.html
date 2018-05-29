@@ -6,7 +6,21 @@
             </button>
         </div>
         <mat-card-title>{{ system.name }}</mat-card-title>
-        <mat-card-subtitle>{{ system.type }} | {{ system.status }}</mat-card-subtitle>
+        <mat-card-subtitle>
+            <span [ngSwitch]="system.type">
+                <mat-icon *ngSwitchCase="'solar'" title="{{ system.type }}">wb_sunny</mat-icon>
+                <mat-icon *ngSwitchCase="'geothermal'" title="{{ system.type }}">ac_unit</mat-icon>
+                <mat-icon *ngSwitchCase="'marine'" title="{{ system.type }}">pool</mat-icon>
+                <mat-icon *ngSwitchDefault title="{{ system.type }}">tune</mat-icon>
+            </span>
+            &nbsp;
+            <span [ngSwitch]="system.status">
+                <mat-icon *ngSwitchCase="'active'" title="{{ system.status }}">done</mat-icon>
+                <mat-icon *ngSwitchCase="'inactive'" title="{{ system.status }}">do_not_disturb_alt</mat-icon>
+                <mat-icon *ngSwitchDefault title="{{ system.status }}">report_problem</mat-icon>
+            </span>
+        </mat-card-subtitle>
+        
     </mat-card-header>
     <app-agm-map [markers]="[{lat: system.lat, long: system.long}]"></app-agm-map>
     <mat-card-content>
