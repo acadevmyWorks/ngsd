@@ -15,7 +15,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
-    this.cardsSubscription = this.dashboardService.getCards().subscribe(result => {
+    this.cardsSubscription = this.dashboardService.getCards()
+    .subscribe(result => {
       this.onLoading = false;
       this.cards = result;
     });
