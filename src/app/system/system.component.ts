@@ -21,27 +21,36 @@ export class SystemComponent implements OnInit, OnDestroy {
   dynamicComponents: IDynamicComponent[];
   markers: Marker[];
   systems$: Subscription;
+  markers$: Subscription;
+  activeSystem$: Subscription;
   onLoading = true;
 
   constructor(public systemService: SystemService) {}
 
   ngOnInit() {
-    // TODO: Add Filter/Map on Observable
-    // TODO: Reactive onLoading
-    this.systems$ = this.systemService.getAllSystems().subscribe(result => {
-      this.dataSource.data = <System[]>result;
-      this.markers = this.dataSource.data.map(system => ({lat: system.lat, long: system.long}));
-      this.activeSystem = (this.activeSystem) ? <System>result.find(ex => ex.id === this.activeSystem.id) : undefined;
-      this.onLoading = false;
-    });
+      // TODO: Reactive onLoading
+      this.systems$ = this.systemService.availableSystems.subscribe(systems => {
+        this.dataSource.data = systems;
+        this.onLoading = false;
+      });
+      this.markers$ = this.systemService.systemMarkers.subscribe(markers => {
+        this.markers = markers;
+      });
+      this.activeSystem$ = this.systemService.activatedSystemObservable.subscribe(system => {
+        this.activeSystem = system;
+      });
+      this.systemService.getAllSystems();
+
   }
 
   setActiveSystem(activeSystem: System | undefined) {
-    this.activeSystem = activeSystem;
+    this.systemService.setActiveSystem(activeSystem);
     this.dynamicComponents = this.systemService.getGraphs(activeSystem);
   }
 
   ngOnDestroy() {
     this.systems$.unsubscribe();
+    this.markers$.unsubscribe();
+    this.activeSystem$.unsubscribe();
   }
 }

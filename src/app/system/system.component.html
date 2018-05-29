@@ -3,7 +3,7 @@
         <app-agm-map [markers]="markers"></app-agm-map>
         <app-system-list [dataSource]="dataSource" [displayedColumns]="dataColumns" (clickedRow)="setActiveSystem($event)"></app-system-list>
     </div>
-    <div fxFlex="30" *ngIf="activeSystem">
+    <div fxFlex="30" *ngIf="activeSystem?.id">
         <app-system-detail [system]="activeSystem" [dynamicComponents]="dynamicComponents" (closedCard)="setActiveSystem()"></app-system-detail>
     </div>
 </div>
